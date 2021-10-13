@@ -1,0 +1,157 @@
+swagger: "2.0"
+
+info:
+  title: Swagger Template
+  description: A Template API
+  version: "0.1"
+
+paths:
+  /greeting:
+    get:
+      operationId: app.flask.routes.say_hello
+      summary: Returns a greeting.
+      responses:
+        200:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Message greeting.  
+  /process_img:
+    post:
+      operationId: app.flask.routes.process_image
+      summary: Endpoint to receive and process an image.
+      parameters:
+      - description: Example payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/ImagePayload'
+      produces:
+      - application/json
+      responses:
+        201:
+          description: OK
+          schema:
+            $ref: '#/definitions/ImageResponse'
+  /process_text:
+    post:
+      operationId: app.flask.routes.process_text
+      summary: Endpoint to receive and process a piece of text.
+      parameters:
+      - description: Example payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/TextPayload'
+      produces:
+      - application/json
+      responses:
+        201:
+          description: OK
+          schema:
+            $ref: '#/definitions/TextResponse'
+  /process_audio:
+    post:
+      operationId: app.flask.routes.process_audio
+      summary: Endpoint to receive and process an audio.
+      parameters:
+      - description: Example payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/AudioPayload'
+      produces:
+      - application/json
+      responses:
+        201:
+          description: OK
+          schema:
+            $ref: '#/definitions/AudioResponse'
+
+definitions:
+  ImagePayload:
+    type: object
+    properties:
+      image:
+        description: A base64-encoded image
+        type: string
+      img_size:
+        description: Size of image
+        type: array
+        items:
+          - type: integer
+        minItems: 3
+        maxItems: 3
+    required:
+    - image
+    - img_size
+  ImageResponse:
+      type: object
+      properties:
+        image:
+          description: A base64-encoded image
+          type: string
+      required:
+      - image
+  AudioPayload:
+    type: object
+    properties:
+      audio:
+        description: A base64-encoded audio file
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+      sample_rate:
+        description: Sampling rate of the audio
+        type: integer
+      noise_freq:
+        description: Frequency of the noise we want to add
+        type: integer
+    required:
+    - audio
+    - sample_rate
+    - noise_freq
+  AudioResponse:
+      type: object
+      properties:
+        audio:
+          description: A base64-encoded audio file
+          type: string
+      required:
+      - audio
+  TextPayload:
+    type: object
+    properties:
+      text:
+        description: String representing the text
+        type: string
+      n_words:
+        description: The top N words with highest frequency
+        type: integer
+    required:
+    - text
+    - n_words
+  TextResponse:
+    type: object
+    properties: 
+      result:
+        description: List of key value pairs with ten most occuring words
+        type: array
+        items: 
+          type: object
+          properties: 
+            word:
+              type: string
+            count:
+              type: integer
+
+    required:
+      - result

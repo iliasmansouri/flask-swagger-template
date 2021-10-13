@@ -1,0 +1,7 @@
+connexion==2.9.0
+swagger-ui-bundle==0.0.9
+flask==1.1.4
+gunicorn==20.1.0
+jsonpickle==2.0.0
+opencv-python==4.5.3.56
+flask-cors
