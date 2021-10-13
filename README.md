@@ -24,7 +24,7 @@
 
 ## About The Project
 
-about blabla
+A REST API template for ML-based applications.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -44,11 +44,9 @@ about blabla
 
 ## Getting Started
 
-There are 2 requirements.txt, one for each service. If planning to run on local machine everything can run in one environment.
-
 ### Prerequisites
 
-Make sure to use Python 3.6 environment:
+Make sure to use a Python 3.6 environment:
 
 ```sh
   conda create -n swagger python=3.6
@@ -56,10 +54,23 @@ Make sure to use Python 3.6 environment:
 
 ### Installation
 
-1.
-2.
-3.
-4.
+Make sure to run the commands below from the root of this cloned repo:
+
+1. ```sh
+   pip install -r front_end/requirements.txt
+   ```
+
+2. ```sh
+   docker build -t "swagger-ui" -f back_end/Dockerfile .
+   ```
+
+3. ```sh
+   docker run -p 8296:8296 swagger-ui
+   ```
+
+4. ```sh
+   streamlit run main.py
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -75,8 +86,8 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Ilias Mansouri - [@LinkedIn](https://www.linkedin.com/in/ilias-mansouri/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+```
+````
