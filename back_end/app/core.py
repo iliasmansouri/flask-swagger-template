@@ -1,10 +1,11 @@
-import cv2
-import numpy as np
-import base64
 import logging
-import config
 import math
 
+import config
+import cv2
+import numpy as np
+
+from .common.image_utils import b64_to_img, img_to_b64
 
 logging.basicConfig(level=config.LOGLEVEL)
 logger = logging.getLogger(__name__)
@@ -25,18 +26,6 @@ def word_count(text: str) -> dict:
 
 def keep_n_words(data: dict, n_rows: int) -> dict:
     return dict(sorted(data.items(), key=lambda x: x[1], reverse=True)[:n_rows])
-
-
-def b64_to_img(image: str) -> np.ndarray:
-    np_arr = np.fromstring(base64.b64decode(image), np.uint8)
-    img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-    return img
-
-
-def img_to_b64(image: np.ndarray) -> str:
-    _, im_arr = cv2.imencode(".jpg", image)
-    im_bytes = im_arr.tobytes()
-    return base64.b64encode(im_bytes).decode("utf-8")
 
 
 def process_image(payload: dict, scale: int = 1.5) -> dict:

@@ -4,6 +4,7 @@ import cv2
 import requests
 from common.image_utils import img_to_b64
 from scipy.io.wavfile import read
+
 from .utils import StreamLitResponse
 
 
@@ -14,7 +15,7 @@ class PostRequest:
         self.assets_dir = assets_dir
         self.url = url
 
-    def post(self, tx_type: str) -> None:
+    def post(self, tx_type: str) -> StreamLitResponse:
         if tx_type == "Test":
             return self.__post_test()
         elif tx_type == "Image":
