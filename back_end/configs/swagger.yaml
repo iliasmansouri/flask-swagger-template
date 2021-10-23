@@ -22,7 +22,7 @@ paths:
   /process_img:
     post:
       operationId: app.flask.routes.process_image
-      summary: Endpoint to receive and process an image.
+      summary: Endpoint to receive an RGB image and returns it as a grayscale.
       parameters:
       - description: Example payload
         in: body
@@ -40,7 +40,7 @@ paths:
   /process_text:
     post:
       operationId: app.flask.routes.process_text
-      summary: Endpoint to receive and process a piece of text.
+      summary: Endpoint to receive a piece of text and returns the top n occuring words.
       parameters:
       - description: Example payload
         in: body
@@ -58,7 +58,7 @@ paths:
   /process_audio:
     post:
       operationId: app.flask.routes.process_audio
-      summary: Endpoint to receive and process an audio.
+      summary: Endpoint to receive an audio and adds a specified frequency in the background.
       parameters:
       - description: Example payload
         in: body
